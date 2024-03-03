@@ -1,12 +1,9 @@
-# 行为树
+# 一、行为树基本概念
 
-
-## 基本概念
-
-### 1. BehaviorTree的介绍
+## 1. BehaviorTree的介绍
 BehaviorTree是由一系列具有层级结构的节点形成的树，用于控制task的执行流程。
 
-#### 1.1 基本概念
+### 1.1 基本概念
 
 * tick信号发送到行为树的根节点，然后由根节点扩散传递到叶子节点。
 
@@ -22,7 +19,7 @@ BehaviorTree是由一系列具有层级结构的节点形成的树，用于控�
 
 * LeafNodes通常用于实际执行命令（比如负责与系统的其他部分进行交互）。```Action```节点是最常见的LeafNodes
 
-#### 1.2 tick是如何工作的？
+### 1.2 tick是如何工作的？
 参看如下示意图：
 
 
@@ -40,7 +37,7 @@ BehaviorTree是由一系列具有层级结构的节点形成的树，用于控�
 
 4) 一旦最后一个孩子节点执行完成，则整个Sequence节点的状态就会由```RUNNING```状态变为```SUCCESS```状态
 
-#### 1.3 结点类型
+### 1.3 结点类型
 
 ![sequence-animation](https://raw.githubusercontent.com/ivanzz1001/cplusplus_learning/main/BehaviorTree/image/bt_node_type.png)
 
@@ -50,7 +47,7 @@ BehaviorTree是由一系列具有层级结构的节点形成的树，用于控�
 
 * asynchronous节点则可能会返回```RUNING```状态，用于表示该任务当前仍然处于正在被执行状态。此种情况下，父节点将会继续tick该节点，直到最终返回SUCCESS或者FAILURE.
 
-#### 1.4 实例
+### 1.4 实例
 
 为了更好的理解行为树，如下我们给出一些实例。为简单起见，当返回RUNNING状态时我们暂不考虑会发生哪些动作。
 
